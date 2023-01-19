@@ -6,6 +6,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { WalletModule } from './wallet/wallet.module';
 import { TransactionModule } from './transaction/transaction.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -18,8 +19,9 @@ import { TransactionModule } from './transaction/transaction.module';
       process.env.DB_URI
     ),
     UserModule,
-    WalletModule,
-    TransactionModule
+    // WalletModule,
+    TransactionModule,
+    AuthModule
 
   ],
   providers: [AppService],

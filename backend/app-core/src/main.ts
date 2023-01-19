@@ -4,10 +4,17 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import * as createRedisStore from 'connect-redis';
 import Redis from 'ioredis'
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api')
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true
+    })
+  )
   const RedisStore = createRedisStore(session);
   const redisClient = new Redis({
     host: process.env.REDIS_HOST,
