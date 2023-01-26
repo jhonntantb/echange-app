@@ -1,14 +1,16 @@
-import chains from './chains/get';
+const chains = require('./chains/get');
 
-export const contracts_build_directory = `contracts/abis`;
-export const networks = chains;
-export const compilers = {
-  solc: {
-    version: '0.8.17',
-    settings: {
-      optimizer: {
-        enabled: true,
-        runs: 200,
+module.exports = {
+  contracts_build_directory: `contracts/abis`,
+  networks: chains,
+  compilers: {
+    solc: {
+      version: '0.8.17',
+      settings: {
+        optimizer: {
+          enabled: true,
+          runs: 200,
+        },
       },
     },
   },

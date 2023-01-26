@@ -1,11 +1,11 @@
-import { readdirSync } from 'fs';
-import appRoot from 'app-root-path';
-import Config from './networkconfig';
+const fs = require('fs');
+const appRoot = require('app-root-path');
+const Config = require('./networkconfig');
 
 const buildNetworks = () => {
   const networks = {};
   const __dir = `${appRoot}/config/chains`;
-  const files = readdirSync(__dir);
+  const files = fs.readdirSync(__dir);
 
   files.forEach((file) => {
     const info = require(`${__dir}/${file}`);
@@ -22,4 +22,4 @@ const buildNetworks = () => {
   return networks;
 };
 
-export default buildNetworks();
+module.exports = buildNetworks();

@@ -1,9 +1,9 @@
-import appRoot from 'app-root-path';
+const appRoot = require('app-root-path');
 require('dotenv').config({ path: `${appRoot}/config/.env` });
 
-import HDWalletProvider from '@truffle/hdwallet-provider';
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
-export default (walletAddress, privateKeys, network_id, url) => {
+module.exports = (walletAddress, privateKeys, network_id, url) => {
   return {
     network_id,
     provider: () => new HDWalletProvider(privateKeys, url),
